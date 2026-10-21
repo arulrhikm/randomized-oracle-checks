@@ -1,0 +1,10 @@
+% eps columns: 0.001 (ell=12), 1e-06 (ell=22), 1e-10 (ell=36)
+This work, unitary branches & 0 & no & no & 88/168/352 & 88/168/280 \\
+GKZ sampler, one clean ancilla [GKZ, KG24, KASD26] & 1 & no & no & 87/167/279 & 87/167/279 \\
+GKZ sampler, one clean ancilla, measured [GKZ, KASD26] & 1 & yes & no & 83/163/275 & 83/163/275 \\
+GKZ sampler, ell-2 clean ancillae, measured [GKZ, Jones13, Gidney18] & l-2 & yes & no & 47/87/143 & 47/87/143 \\
+One borrowed qubit [ZB24, KG24] & 0 & no & yes & 752 & 1552 \\
+Maslov, ceil((m-2)/2) borrowed qubits [Maslov16] & 0 & no & yes & 384 & 784 \\
+One clean ancilla [KG24, KASD26 Eq. 12] & 1 & no & yes & 383 & 783 \\
+One clean ancilla, measured [KASD26] & 1 & yes & yes & 379 & 779 \\
+$m-2$ clean ancillae, measured [Jones13, Gidney18, KSD26] & m-2 & yes & yes & 195 & 395 \\

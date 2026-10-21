@@ -1,0 +1,9 @@
+n=1 t=1 a<=2: 454 invariant classes, 2546 repeated classes agree; log2 classes 8.8 <= (t+1)(2t+n+3) = 12
+n=2 t=1 a<=1: 1306 invariant classes, 1694 repeated classes agree; log2 classes 10.4 <= (t+1)(2t+n+3) = 14
+n=1 t=2 a<=1: 2761 invariant classes, 239 repeated classes agree; log2 classes 11.4 <= (t+1)(2t+n+3) = 24
+n=2 t=2 a<=1: 1991 invariant classes, 9 repeated classes agree; log2 classes 11.0 <= (t+1)(2t+n+3) = 27
+the random-set T-count theorem (Appendix C) at eps=1/4 (least t not excluded):
+n=40 k=4: any clean ancillae t>=10224, no ancilla t>=2524224, decision trees n-k-2log(n+1)-7 = 18
+n=60 k=10: any clean ancillae t>=1074035, no ancilla t>=18757495449, decision trees n-k-2log(n+1)-7 = 31
+n=80 k=20: any clean ancillae t>=29826141, no ancilla t>=10915336520173, decision trees n-k-2log(n+1)-7 = 40
+n=100 k=30: any clean ancillae t>=854730412, no ancilla t>=7197676076168190, decision trees n-k-2log(n+1)-7 = 49

@@ -1,0 +1,48 @@
+== Lambda_m(X) with m-2 borrowed qubits (Maslov Prop. 5), exact check over all inputs
+m=1: qubits=2 T=0 (expected 0) exact=True 
+m=2: qubits=3 T=7 (expected 7) exact=True 
+m=3: qubits=5 T=16 (expected 16) exact=True 
+m=4: qubits=7 T=24 (expected 24) exact=True 
+m=5: qubits=9 T=32 (expected 32) exact=True 
+m=6: qubits=11 T=40 (expected 40) exact=True 
+
+== refined form: Lambda_m(X) with ceil((m-2)/2) borrowed qubits, exact check over all inputs
+m=3: qubits=5 borrowed=1 T=16 (expected 16) exact=True 
+m=4: qubits=6 borrowed=1 T=24 (expected 24) exact=True 
+m=5: qubits=8 borrowed=2 T=32 (expected 32) exact=True 
+m=6: qubits=9 borrowed=2 T=40 (expected 40) exact=True 
+m=7: qubits=11 borrowed=3 T=48 (expected 48) exact=True 
+m=8: qubits=12 borrowed=3 T=56 (expected 56) exact=True 
+
+== full randomized branches (refined gate), random sampled rows, exact check over all inputs
+n=5 ell=2 trial=0: T=7 exact=True 
+n=5 ell=2 trial=1: T=7 exact=True 
+n=6 ell=3 trial=0: T=16 exact=True 
+n=6 ell=3 trial=1: T=16 exact=True 
+n=7 ell=3 trial=0: T=16 exact=True 
+n=7 ell=3 trial=1: T=16 exact=True 
+n=8 ell=4 trial=0: T=24 exact=True 
+n=8 ell=4 trial=1: T=24 exact=True 
+n=9 ell=4 trial=0: T=24 exact=True 
+n=9 ell=4 trial=1: T=24 exact=True 
+n=9 ell=5 trial=0: T=32 exact=True 
+n=9 ell=5 trial=1: T=32 exact=True 
+n=10 ell=6 trial=0: T=40 exact=True 
+n=10 ell=6 trial=1: T=40 exact=True 
+n=11 ell=7 trial=0: T=48 exact=True 
+n=11 ell=7 trial=1: T=48 exact=True 
+
+== determinants: Clifford+T gates on n >= 4 qubits have det 1; Toff_n has det -1
+n=5 ell=2: branch flips the target on 4 = 2^(n-1-ell) inputs, permutation sign +1, circuit det exponent 0 (det = w^0)
+n=6 ell=3: branch flips the target on 4 = 2^(n-1-ell) inputs, permutation sign +1, circuit det exponent 0 (det = w^0)
+n=7 ell=3: branch flips the target on 8 = 2^(n-1-ell) inputs, permutation sign +1, circuit det exponent 0 (det = w^0)
+n=8 ell=4: branch flips the target on 8 = 2^(n-1-ell) inputs, permutation sign +1, circuit det exponent 0 (det = w^0)
+n=9 ell=5: branch flips the target on 8 = 2^(n-1-ell) inputs, permutation sign +1, circuit det exponent 0 (det = w^0)
+n=10 ell=6: branch flips the target on 8 = 2^(n-1-ell) inputs, permutation sign +1, circuit det exponent 0 (det = w^0)
+
+== T-count of the borrowed-qubit branch (counted from the built circuit)
+n=10: ell=[12, 22, 36] T=[None, None, None]  (None: condition n >= ceil(3 ell / 2) fails)
+n=50: ell=[12, 22, 36] T=[88, 168, None]  (None: condition n >= ceil(3 ell / 2) fails)
+n=100: ell=[12, 22, 36] T=[88, 168, 280]  (None: condition n >= ceil(3 ell / 2) fails)
+
+all checks passed

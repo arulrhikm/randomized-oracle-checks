@@ -1,0 +1,38 @@
+== (a) brute force over all subspaces
+m=1: subspaces by codimension {0: 1, 1: 1}; Yao and random-subspace claims hold
+m=2: subspaces by codimension {0: 1, 1: 3, 2: 1}; Yao and random-subspace claims hold
+m=3: subspaces by codimension {0: 1, 1: 7, 2: 7, 3: 1}; Yao and random-subspace claims hold
+m=4: subspaces by codimension {0: 1, 1: 15, 2: 35, 3: 15, 4: 1}; Yao and random-subspace claims hold
+m=5: subspaces by codimension {0: 1, 1: 31, 2: 155, 3: 155, 4: 31, 5: 1}; Yao and random-subspace claims hold
+
+== (b), (c) bounds on RPDT_eps(OR_m)
+m=99 eps=1e-06: 20 <= RPDT <= 20;  T_mixed(Toff_100) >= 19
+m=99 eps=1e-10: 34 <= RPDT <= 34;  T_mixed(Toff_100) >= 33
+m=49 eps=1e-10: 34 <= RPDT <= 34;  T_mixed(Toff_50) >= 33
+max upper - lower over the grid: 1
+
+== (d) ancilla-free upper bound vs the lower bound, n >= ceil(3 ell / 2)
+eps=0.001: ell=12, n=18: upper 88, lower 9, ratio 9.78, 8L+40=112
+eps=1e-06: ell=22, n=33: upper 168, lower 19, ratio 8.84, 8L+40=192
+eps=1e-10: ell=36, n=54: upper 280, lower 33, ratio 8.48, 8L+40=304
+eps=1e-15: ell=52, n=78: upper 408, lower 49, ratio 8.33, 8L+40=432
+
+== (e) distance from affine: Yao step, every non-affine f on n=3, sample on n=4
+n=3: 9472 (f, a, q) triples checked over all trees
+n=4: 6260 (f, a, q) triples checked over all trees
+
+== (f) two-sided law for f = a xor 1_A, A of codimension r
+r= 8 eps=0.001: lower   5.00  construction   56  cap 8log(1/max(2^-r,eps))+16 =   80.0
+r= 8 eps=1e-06: lower   5.00  construction   56  cap 8log(1/max(2^-r,eps))+16 =   80.0
+r= 8 eps=1e-10: lower   5.00  construction   56  cap 8log(1/max(2^-r,eps))+16 =   80.0
+r=20 eps=0.001: lower   5.97  construction   88  cap 8log(1/max(2^-r,eps))+16 =   95.7
+r=20 eps=1e-06: lower  15.93  construction  152  cap 8log(1/max(2^-r,eps))+16 =  175.5
+r=20 eps=1e-10: lower  17.00  construction  152  cap 8log(1/max(2^-r,eps))+16 =  176.0
+r=36 eps=0.001: lower   5.97  construction   88  cap 8log(1/max(2^-r,eps))+16 =   95.7
+r=36 eps=1e-06: lower  15.93  construction  168  cap 8log(1/max(2^-r,eps))+16 =  175.5
+r=36 eps=1e-10: lower  29.22  construction  280  cap 8log(1/max(2^-r,eps))+16 =  281.8
+r=60 eps=0.001: lower   5.97  construction   88  cap 8log(1/max(2^-r,eps))+16 =   95.7
+r=60 eps=1e-06: lower  15.93  construction  168  cap 8log(1/max(2^-r,eps))+16 =  175.5
+r=60 eps=1e-10: lower  29.22  construction  280  cap 8log(1/max(2^-r,eps))+16 =  281.8
+
+all checks passed
