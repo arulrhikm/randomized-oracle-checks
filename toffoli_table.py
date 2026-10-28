@@ -8,11 +8,11 @@ Every formula is quoted from its source; nothing here is fitted or estimated.
 Our branch is one ell-controlled NOT after a CNOT basis change (Theorem 1), costing 8 ell - 8
 with ceil((ell - 2)/2) borrowed idle inputs when n >= ceil(3 ell / 2) (Maslov 2016, Prop. 5), with
 ell = ceil(log2(4/eps)), the same ell as GKZ.  For ell >= n - 1 we implement Toff_n exactly instead.
-Run: python3 toffoli_table.py   (prints the LaTeX body rows)
+Run: python3 toffoli_table.py   (prints the body rows: T-counts at n = 50 for each eps)
 """
 import math
 
-NS = (50, 100)
+N = 50
 EPSS = (1e-3, 1e-6, 1e-10)
 
 
@@ -38,7 +38,7 @@ def zb_dirty(m, k):      # Zindorf-Bose arXiv 2404.02279, Thm 2 with Thm 10: k b
 
 
 def ours_unitary(n, eps):
-    """Branch of Theorem 1 / Theorem 1; returns (T, clean ancillae)."""
+    """Branch of Theorem 1 (formal version in Appendix B); returns (T, clean ancillae)."""
     l, m = ell(eps), n - 1
     if l >= 3 and n >= -(-3 * l // 2):
         return maslov_borrowed(l), 0   # borrow ceil((l - 2)/2) idle data coordinates
@@ -67,27 +67,25 @@ def gkz_and_ladder(eps):      # GKZ's sampler with the measured AND ladder (Jone
 
 
 ROWS = [
-    # label, clean ancillae (per n), measurement, exact, T(n, eps)
-    ("This work, unitary branches", lambda n: "0", "no", "no", lambda n, e: ours_unitary(n, e)[0]),
-    ("GKZ sampler, one clean ancilla [GKZ, KG24, KASD26]", lambda n: "1", "no", "no", lambda n, e: gkz_clean_unitary(e)),
-    ("GKZ sampler, one clean ancilla, measured [GKZ, KASD26]", lambda n: "1", "yes", "no", lambda n, e: gkz_clean_measured(e)),
-    ("GKZ sampler, ell-2 clean ancillae, measured [GKZ, Jones13, Gidney18]", lambda n: "l-2", "yes", "no", lambda n, e: gkz_and_ladder(e)),
-    ("One borrowed qubit [ZB24, KG24]", lambda n: "0", "no", "yes", lambda n, e: kg_dirty(n - 1)),
-    ("Maslov, ceil((m-2)/2) borrowed qubits [Maslov16]", lambda n: "0", "no", "yes", lambda n, e: maslov_borrowed(n - 1)),
-    ("One clean ancilla [KG24, KASD26 Eq. 12]", lambda n: "1", "no", "yes", lambda n, e: 8 * (n - 1) - 9),
-    ("One clean ancilla, measured [KASD26]", lambda n: "1", "yes", "yes", lambda n, e: 8 * (n - 1) - 13),
-    ("$m-2$ clean ancillae, measured [Jones13, Gidney18, KSD26]", lambda n: "m-2", "yes", "yes", lambda n, e: 4 * (n - 1) - 1),
+    # label as in the paper's table, ancillae, measurement, T(n, eps)
+    ("This paper", "none (idle controls)", "no", lambda n, e: ours_unitary(n, e)[0]),
+    ("GKZ + Khattar-Gidney", "1 clean", "no", lambda n, e: gkz_clean_unitary(e)),
+    ("GKZ + Kole et al.", "1 clean", "yes", lambda n, e: gkz_clean_measured(e)),
+    ("GKZ + AND ladder", "ell-2 clean", "yes", lambda n, e: gkz_and_ladder(e)),
+    ("Zindorf-Bose", "1 borrowed", "no", lambda n, e: kg_dirty(n - 1)),
+    ("Maslov", "ceil((m-2)/2) borrowed", "no", lambda n, e: maslov_borrowed(n - 1)),
+    ("Khattar-Gidney", "1 clean", "no", lambda n, e: 8 * (n - 1) - 9),
+    ("Kole et al.", "1 clean", "yes", lambda n, e: 8 * (n - 1) - 13),
+    ("AND ladder", "m-2 clean", "yes", lambda n, e: 4 * (n - 1) - 1),
 ]
 
 
 def main():
-    print("% eps columns:", ", ".join(f"{e:g} (ell={ell(e)})" for e in EPSS))
-    for label, anc, meas, exact, T in ROWS:
-        cells = []
-        for n in NS:
-            vals = [T(n, e) for e in EPSS]
-            cells.append("/".join(str(v) for v in vals) if len(set(vals)) > 1 else str(vals[0]))
-        print(f"{label} & {anc(NS[0])} & {meas} & {exact} & " + " & ".join(cells) + r" \\")
+    print(f"% T-count at n = {N}; eps columns:", ", ".join(f"{e:g} (ell={ell(e)})" for e in EPSS))
+    for label, anc, meas, T in ROWS:
+        vals = [T(N, e) for e in EPSS]
+        cells = " & ".join(str(v) for v in vals) if len(set(vals)) > 1 else rf"\multicolumn{{3}}{{c}}{{{vals[0]}}}"
+        print(f"{label} & {anc} & {meas} & {cells} \\\\")
 
 
 if __name__ == "__main__":

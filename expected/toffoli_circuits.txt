@@ -1,4 +1,4 @@
-== Lambda_m(X) with m-2 borrowed qubits (Maslov Prop. 5), exact check over all inputs
+== C^mX with m-2 borrowed qubits (Maslov Prop. 5), exact check over all inputs
 m=1: qubits=2 T=0 (expected 0) exact=True 
 m=2: qubits=3 T=7 (expected 7) exact=True 
 m=3: qubits=5 T=16 (expected 16) exact=True 
@@ -6,7 +6,7 @@ m=4: qubits=7 T=24 (expected 24) exact=True
 m=5: qubits=9 T=32 (expected 32) exact=True 
 m=6: qubits=11 T=40 (expected 40) exact=True 
 
-== refined form: Lambda_m(X) with ceil((m-2)/2) borrowed qubits, exact check over all inputs
+== refined form: C^mX with ceil((m-2)/2) borrowed qubits, exact check over all inputs
 m=3: qubits=5 borrowed=1 T=16 (expected 16) exact=True 
 m=4: qubits=6 borrowed=1 T=24 (expected 24) exact=True 
 m=5: qubits=8 borrowed=2 T=32 (expected 32) exact=True 

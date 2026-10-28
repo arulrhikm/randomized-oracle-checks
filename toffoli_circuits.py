@@ -117,7 +117,7 @@ def srts(a, b, c):
 
 
 def mct_borrowed(ctrl, tgt, anc):
-    """Lambda_m(X) on controls ctrl -> tgt, borrowing len(anc) >= m - 2 qubits in any state.
+    """C^mX on controls ctrl -> tgt, borrowing len(anc) >= m - 2 qubits in any state.
     Maslov 2016 Prop. 5 (preliminary form with m - 2 borrowed qubits); T-count 8m - 8 for m >= 3."""
     m = len(ctrl)
     if m == 0:
@@ -160,7 +160,7 @@ def rt4s(x, y, z, t):
 
 
 def mct_borrowed_refined(ctrl, tgt, anc):
-    """Lambda_m(X) borrowing only ceil((m-2)/2) qubits in any state, T-count 8m - 8 for m >= 3.
+    """C^mX borrowing only ceil((m-2)/2) qubits in any state, T-count 8m - 8 for m >= 3.
     Maslov 2016 Prop. 5, refined form: the middle Toffoli absorbs three controls (rt4l) and each
     chain step absorbs two (rt4s), with at most one single-control step (rts)."""
     m = len(ctrl)
@@ -389,13 +389,13 @@ def branch_tcount(n, eps):
 
 
 def main():
-    print("== Lambda_m(X) with m-2 borrowed qubits (Maslov Prop. 5), exact check over all inputs")
+    print("== C^mX with m-2 borrowed qubits (Maslov Prop. 5), exact check over all inputs")
     for m in range(1, 7):
         ok, msg, t, nq = verify_mct(m)
         expect = {1: 0, 2: 7}.get(m, 8 * m - 8)
         print(f"m={m}: qubits={nq} T={t} (expected {expect}) exact={ok} {'' if ok else msg}")
         assert ok and t == expect
-    print("\n== refined form: Lambda_m(X) with ceil((m-2)/2) borrowed qubits, exact check over all inputs")
+    print("\n== refined form: C^mX with ceil((m-2)/2) borrowed qubits, exact check over all inputs")
     for m in range(3, 9):
         ok, msg, t, nq, p = verify_mct_refined(m)
         print(f"m={m}: qubits={nq} borrowed={p} T={t} (expected {8 * m - 8}) exact={ok} {'' if ok else msg}")
