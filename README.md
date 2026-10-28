@@ -1,6 +1,6 @@
 # randomized-oracle-checks
 
-Scripts that check the constructions and numerical claims in *When Do Randomized Boolean Oracles Need Extra Qubits?* (A. R. Mazumder).
+Scripts that check the constructions and numerical claims in *Ancilla-free randomized Toffoli gates and the T-count of Boolean oracles* (A. R. Mazumder).
 
 Python 3.9 or later, standard library only.
 
