@@ -1,6 +1,6 @@
 # randomized-oracle-checks
 
-Scripts that check the constructions and numerical claims in *Ancilla-free randomized Toffoli gates and the T-count of Boolean oracles* (A. R. Mazumder).
+Scripts that check the constructions and numerical claims in *Ancilla-free randomized Toffoli gates and the T-count of Boolean oracles* (A. R. Mazumder, [arXiv:2610.38189](https://arxiv.org/abs/2610.38189)).
 
 Python 3.9 or later, standard library only.
 
@@ -21,3 +21,16 @@ python3 toffoli_circuits.py   # or run a single check
 | `unstructured_union_bound.py` | The union-bound inequality in the random-set theorem. |
 
 Each script prints its results, and `expected/` holds the output it should produce.
+
+## Citing
+
+```bibtex
+@misc{mazumder2026ancillafree,
+  author        = {Mazumder, Arul Rhik},
+  title         = {Ancilla-free randomized {Toffoli} gates and the {$T$}-count of {Boolean} oracles},
+  year          = {2026},
+  eprint        = {2610.38189},
+  archivePrefix = {arXiv},
+  primaryClass  = {quant-ph}
+}
+```
