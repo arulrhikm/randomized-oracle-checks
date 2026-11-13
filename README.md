@@ -34,3 +34,7 @@ Each script prints its results, and `expected/` holds the output it should produ
   primaryClass  = {quant-ph}
 }
 ```
+
+## Licence
+
+MIT (`LICENSE`).
